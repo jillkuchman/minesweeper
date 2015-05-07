@@ -19,15 +19,18 @@ minesweeper.controller('GameCtrl', function GameCtrl($scope) {
                 unique_random_numbers.push( random_number );
             }
         }
-        console.log(unique_random_numbers);
+        return unique_random_numbers;
     }
 
     $scope.newGame = function() {
+        var spaces = $scope.spaces;
         for ( i = 1; i < 65; i++) {
             $scope.spaces.push({ position: i, bomb: false, clue: null });
         }
-        console.log($scope.spaces);
-        $scope.bombPositionGenerator();
+        var bomb_positions = $scope.bombPositionGenerator();
+        bomb_positions.forEach(function(bomb_position) {
+            $scope.spaces[bomb_position - 1].bomb = true;
+        });
 
     }
 
