@@ -12,4 +12,5 @@ minesweeper.config(function($stateProvider) {
         templateUrl: "partials/game.html",
         controller: "GameCtrl"
     });
+
 });

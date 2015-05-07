@@ -1,0 +1,15 @@
+.gamepiece  {
+    width: 20px;
+    height: 20px;
+    background-color: grey;
+
+}
+
+.blah {
+    max-width: 160px;
+
+}
+
+.gamepiece:focus {
+    outline: 0;
+}

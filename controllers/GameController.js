@@ -31,9 +31,22 @@ minesweeper.controller('GameCtrl', function GameCtrl($scope) {
         bomb_positions.forEach(function(bomb_position) {
             $scope.spaces[bomb_position - 1].bomb = true;
         });
+        console.log(bomb_positions);
+        console.log(spaces);
+        //
+        // if (space.bomb == true) {
+        //     space.clue = "bomb";
+        // }
+
 
     }
 
+    $scope.testBomb = function(test) {
+        if (test.bomb === true) {
+            alert("bomb")
+        }
+    }
+//
 });
 
 
