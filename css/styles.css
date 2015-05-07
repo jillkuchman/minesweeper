@@ -13,3 +13,11 @@
 .gamepiece:focus {
     outline: 0;
 }
+
+.clicked {
+    background-color: yellow;
+}
+
+.notbomb {
+    background-color: green;
+}

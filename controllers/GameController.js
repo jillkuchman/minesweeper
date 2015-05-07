@@ -43,11 +43,20 @@ minesweeper.controller('GameCtrl', function GameCtrl($scope) {
 
     $scope.testBomb = function(test) {
         if (test.bomb === true) {
-            alert("bomb")
+            console.log("bomb");
+            $(test).addClass("clicked");
+        }
+        else {
+            console.log("not bomb");
         }
     }
-//
+
+    $scope.clickButton = function(space) {
+        $scope.testBomb(space);
+    }
 });
+
+
 
 
 // unique_random_numbers is an array containing 3 unique numbers in the given range

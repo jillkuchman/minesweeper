@@ -13,4 +13,17 @@ minesweeper.config(function($stateProvider) {
         controller: "GameCtrl"
     });
 
+
 });
+
+// minesweeper.directive('check', function() {
+//     return function (scope, element) {
+//         element.bind("click", function() {
+//             if (scope.bomb == true) {
+//             element.addClass("clicked");
+//         } else {
+//             element.addClass("notbomb")
+//         }
+//         });
+//     };
+// });
