@@ -16,14 +16,11 @@ minesweeper.config(function($stateProvider) {
 
 });
 
-// minesweeper.directive('check', function() {
-//     return function (scope, element) {
-//         element.bind("click", function() {
-//             if (scope.bomb == true) {
-//             element.addClass("clicked");
-//         } else {
-//             element.addClass("notbomb")
-//         }
-//         });
-//     };
-// });
+minesweeper.directive('check', function() {
+    return function (scope, element) {
+        element.bind("click", function() {
+            // element.addClass("opacity");
+            $("span").removeClass("hidden");
+        });
+    };
+});

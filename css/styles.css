@@ -2,7 +2,6 @@
     width: 20px;
     height: 20px;
     background-color: grey;
-
 }
 
 .blah {
@@ -20,4 +19,18 @@
 
 .notbomb {
     background-color: green;
+}
+
+.conor {
+    background-color: green;
+}
+
+img {
+    width: 10px;
+    height: 10px;
+}
+
+button {
+    align: center;
+
 }

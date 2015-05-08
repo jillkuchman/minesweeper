@@ -8,7 +8,6 @@ minesweeper.controller('GameCtrl', function GameCtrl($scope) {
     // $scope.spaces = [];
 
     $scope.spaces = [];
-    // $scope.i = 0;
 
     $scope.bombPositionGenerator = function() {
         unique_random_numbers = [];
@@ -25,14 +24,15 @@ minesweeper.controller('GameCtrl', function GameCtrl($scope) {
     $scope.newGame = function() {
         var spaces = $scope.spaces;
         for ( i = 1; i < 65; i++) {
-            $scope.spaces.push({ position: i, bomb: false, clue: null });
+            $scope.spaces.push({ position: i, bomb: false, clue: null, show: false, row: 0, column: 0 });
         }
         var bomb_positions = $scope.bombPositionGenerator();
         bomb_positions.forEach(function(bomb_position) {
             $scope.spaces[bomb_position - 1].bomb = true;
+            $scope.spaces[bomb_position - 1].clue = "B";
         });
         console.log(bomb_positions);
-        console.log(spaces);
+        // console.log(spaces);
         //
         // if (space.bomb == true) {
         //     space.clue = "bomb";
@@ -41,25 +41,70 @@ minesweeper.controller('GameCtrl', function GameCtrl($scope) {
 
     }
 
+
     $scope.testBomb = function(test) {
         if (test.bomb === true) {
-            console.log("bomb");
+            // console.log("bomb");
             $(test).addClass("clicked");
         }
         else {
-            console.log("not bomb");
+            // console.log("not bomb");
         }
     }
 
+    $scope.cluecount = function(space) {
+        var i = space.position-1;
+        x = 8;
+        var clue_count = 8;
+        if (space.bomb) {
+            space.clue = "B";
+        }
+        else if (((i-1)%4 == 0) || ($scope.spaces[(i-1)].bomb)) {
+            clue_count--;
+        }
+        // else {
+        //     if ($scope.spaces[(i+1)].bomb) {
+        //         clue_count --;
+        //     }
+        //     if ($scope.spaces[(i-1)].bomb) {
+        //         clue_count --;
+        //     }
+        //     if ($scope.spaces[(x+i)].bomb) {
+        //         clue_count --;
+        //     }
+        //     if ($scope.spaces[(i-x)].bomb) {
+        //         clue_count --;
+        //     }
+        //     if ($scope.spaces[(i+x-1)].bomb) {
+        //         clue_count --;
+        //     }
+        //     if ($scope.spaces[(i+x+1)].bomb) {
+        //         clue_count --;
+        //     }
+        //     if ($scope.spaces[(i-(x-1))].bomb) {
+        //         clue_count --;
+        //     }
+        //     if ($scope.spaces[(i-x-1)].bomb) {
+        //         clue_count --;
+        //     }
+
+            space.clue = clue_count;
+            console.log(space.clue);
+        }
+
+
+    }
+
+
     $scope.clickButton = function(space) {
         $scope.testBomb(space);
+        $scope.cluecount(space);
+        space.show = true;
     }
 });
 
 
 
-
-// unique_random_numbers is an array containing 3 unique numbers in the given range
 
 
 // for i in range(0,100) {
@@ -71,8 +116,6 @@ minesweeper.controller('GameCtrl', function GameCtrl($scope) {
 //         downrow++;
 //     }
 // }
-//
-// spaces = [{}, {Bomb}, {},
 //
 // create new game: generate spaces array of 64 piece objects, ten of them are bombs
 // then go into for loop:
@@ -87,9 +130,3 @@ minesweeper.controller('GameCtrl', function GameCtrl($scope) {
 //     minefield = [   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 //                     [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 //                 ]
-//
-//
-// we want ten random numbers btn 1 and 64, and those will be the positions of the bombs
-// bombs array: [ten random numbers between 0 and 63]
-// if
-//

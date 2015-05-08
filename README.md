@@ -1,4 +1,4 @@
-##Angular JS Practice - Flight Selector
+##Angular JS Practice - Minesweeper
 
 ##Developers
 Conor Baumgart and Jill Kuchman
